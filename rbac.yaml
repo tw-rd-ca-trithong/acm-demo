@@ -6,6 +6,7 @@ rules:
 - apiGroups:
   - ""
   resourceNames:
+  - tri-thong.tran@mile.cloud
   - trithong12@gmail.com
   - test-sa@tw-rd-ca-trithong.iam.gserviceaccount.com
   resources:
@@ -48,6 +49,20 @@ metadata:
 subjects:
 - kind: User
   name: trithong12@gmail.com
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default-admin
+  namespace: default
+subjects:
+- kind: User
+  name: tri-thong.tran@mile.cloud
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
